@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projet1</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	   <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+       <% if user_signed_in? %>
+         <p>
+         Bonjour : <%= current_user.email %> 
+         <%= link_to "Se déconnecter", destroy_user_session_path, :method => 'delete' %>
+         </p>
+         <% else %>
+         <p>
+         <%= link_to "Se connecter", new_user_session_path %>
+         </p>
+       <% end %>
+
+    <%= yield %>
+  </body>
+</html>
