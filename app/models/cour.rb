@@ -1,8 +1,7 @@
 class Cour < ActiveRecord::Base
 
-	geocoded_by :lieu
-	after_validation :geocode, :params => {:countrycodes => "fr"}
-
+	geocoded_by :lieu, :params => {:countrycodes => "fr"}
+	after_validation :geocode
 	has_many :users
 
 end
