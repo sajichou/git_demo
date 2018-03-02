@@ -12,11 +12,27 @@
 
 ActiveRecord::Schema.define(version: 20180228203409) do
 
-# Could not dump table "cours" because of following StandardError
-#   Unknown type '' for column 'nombre_eleves'
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-# Could not dump table "inscriptions" because of following StandardError
-#   Unknown type 'fixnum' for column 'cours_id'
+  create_table "cours", force: :cascade do |t|
+    t.string "professeur"
+    t.string "matiere"
+    t.string "jour"
+    t.integer "nombre_eleves", default: 0
+    t.string "lieu"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "user_id"
+    t.integer "el1", default: 0
+    t.integer "el2", default: 0
+    t.integer "el3", default: 0
+  end
+
+  create_table "inscriptions", force: :cascade do |t|
+    t.integer "cours_id"
+    t.integer "eleves_id"
+  end
 
   create_table "recherches", force: :cascade do |t|
     t.float "latitude"
