@@ -13,7 +13,7 @@ class CoursController < ApplicationController
     cours = Cour.create professeur:params[:professeur], matiere:params[:matiere], jour:params[:jour], 
     lieu:params[:lieu]
     #cours.latitude =  Geocoder.coordinates(params[:lieu])[0]
-   # cours.longitude = Geocoder.coordinates(params[:lieu])[1]
+    #cours.longitude = Geocoder.coordinates(params[:lieu])[1]
     cours.save
     redirect_to "/cours/index"
   end
@@ -31,7 +31,7 @@ class CoursController < ApplicationController
   end
 
   def accueil
-    @client_location = request.location
+    @client_location = request.location.address
   end
 
   def search
