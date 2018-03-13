@@ -1,6 +1,7 @@
 class CoursController < ApplicationController
 
-  before_action :authenticate_user! ,only: [:inscription, :new, :create, :destroy]
+  before_action :authenticate_user! ,only: [:inscription]
+  before_action :authenticate_teacher! ,only: [:new, :create, :destroy]
 
   def index
      @cours = Cour.page(params[:page]).per(20)
@@ -20,6 +21,7 @@ class CoursController < ApplicationController
 
   def show
     @cours = Cour.find(params[:id])
+    @inscriptions = Inscription.where("cours_id=?",@cours.id)
   end
 
   def update
@@ -37,7 +39,7 @@ class CoursController < ApplicationController
   def search
     @cours = Cour.where("matiere=? AND nombre_eleves < ?", params[:matiere], 3)
     @lieu = params[:lieu]
-    @lieu_coo = Geocoder.coordinates(params[:lieu])
+    #@lieu_coo = Geocoder.coordinates(params[:lieu])
 
   end
 

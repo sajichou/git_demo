@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  	   <p class="notice"><%= notice %></p>
+       <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
        <% if user_signed_in? %>
@@ -17,13 +17,25 @@
          Bonjour : <%= current_user.email %> 
          <%= link_to "Se déconnecter", destroy_user_session_path, :method => 'delete' %>
          </p>
-         <% else %>
+       <% else %>
          <p>
-         <%= link_to "Se connecter", new_user_session_path %>
+         <%= link_to "Se connecter as user", new_user_session_path %>
          </p>
        <% end %>
 
+       <% if teacher_signed_in? %>
+         <p>
+         Bonjour : <%= current_teacher.email %> 
+         <%= link_to "Se déconnecter", destroy_teacher_session_path, :method => 'delete' %>
+         </p>
+       <% else %>
+         <p>
+         <%= link_to "Se connecter as teacher", new_teacher_session_path %>
+         </p>
+       <% end %>
 
+       <p> <%= debug user_signed_in? %> </p>
+       <p> <%= debug session.to_hash %> </p>
     <%= yield %>
   </body>
 </html>

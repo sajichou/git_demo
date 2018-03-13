@@ -1,16 +1,12 @@
 <h1>Détails du cours proposé par <%= @cours.professeur %> </h1>
 
 <p> <%= index_link %> </p>
-<p>
-<%= image_tag("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=400x400&
-markers=color:blue%7Clabel:S%7C#{@cours.latitude}, #{@cours.longitude}")%>
-</p>
 
 <p>
-<%=
-"https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=400x400&
-markers=color:blue%7Clabel:S%7C#{@cours.latitude}%2C#{@cours.longitude}"
-%>
+	<% @inscriptions.each do |i| %>
+	<%= User.find(i.eleves_id).email %>
+	<br/>
+	<%end%>
 </p>
 
 

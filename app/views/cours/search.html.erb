@@ -14,7 +14,7 @@
 		<th>Adresse</th>
 		<th>Distance</th>
 	</tr>
-	<% for cours in @cours.near(@lieu_coo,20) %>
+	<% for cours in @cours.near(@lieu,20) %>
 	<tr>
 		<td><%= cours.professeur%></td>
 		<td><%= cours.matiere %></td>
@@ -22,7 +22,7 @@
 		<td><%= cours.nombre_eleves %></td>
 		<td><%= cours.lieu %></td>
 		<td>
-		<%= Geocoder::Calculations.distance_between([cours.latitude, cours.longitude], @lieu_coo, :units =>:km) %>
+		<%= Geocoder::Calculations.distance_between([cours.latitude, cours.longitude], @lieu, :units =>:km) %>
 		</td>
 		<td><%= link_to "S'inscrire", {:controller =>"cours", :action=>"inscription", :id=>cours.id} %></td>
 	</tr>

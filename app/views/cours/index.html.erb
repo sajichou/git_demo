@@ -24,7 +24,7 @@
 		<td><%= cours.lieu %></td>
 		<td><%= cours.latitude %></td>
 		<td><%= cours.longitude %></td>
-		<td><a href="/cours/<%=cours.id%>">Modifier</a></td>
+		<td><a href="/cours/<%=cours.id%>">Show</a></td>
 		<td>
 			<%= link_to "Destroy", {:controller => "cours", :action => "destroy", :id => cours.id }%>
 		</td>
