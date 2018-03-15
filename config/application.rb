@@ -27,4 +27,3 @@ module Projet1
 end
 
 
-config.serve_static_assets = true
