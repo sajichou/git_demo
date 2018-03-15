@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   devise_for :teachers
   devise_for :users
 
@@ -32,6 +34,8 @@ Rails.application.routes.draw do
   get 'cours/inscription'
 
   get 'cours/:id' => 'cours#show'
+
+  get 'pages/monespace' 
 
 
 

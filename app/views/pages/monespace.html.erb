@@ -1,0 +1,18 @@
+<h1>Pages#monespace</h1>
+
+<% if user_signed_in? %>
+	<%@inscriptions.each do |inscription| %>
+		<p> cours du professeur : <%= Teacher.find(Cour.find(inscription.cours_id).teacher_id).email %> 
+		<%= link_to " Détails du cours", {:controller =>"cours", :action => "show", :id => inscription.cours_id} %>
+		</p>
+
+	<% end %>
+<% end %>
+
+<% if teacher_signed_in? %>
+	<%@cours_proposes.each do |cours| %>
+		<p>
+		<%= link_to "Cours Proposé", {:controller => "cours", :action => "show", :id => cours.id }%>
+		</p>
+	<% end %>
+<% end %>

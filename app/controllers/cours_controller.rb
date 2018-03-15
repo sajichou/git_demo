@@ -11,11 +11,12 @@ class CoursController < ApplicationController
   end
 
   def new
-    cours = Cour.create professeur:params[:professeur], matiere:params[:matiere], jour:params[:jour], 
+    cours = Cour.create teacher_id:current_teacher.id, matiere:params[:matiere], jour:params[:jour], 
     lieu:params[:lieu]
     #cours.latitude =  Geocoder.coordinates(params[:lieu])[0]
     #cours.longitude = Geocoder.coordinates(params[:lieu])[1]
     cours.save
+    #sleep (3)
     redirect_to "/cours/index"
   end
 
@@ -29,6 +30,10 @@ class CoursController < ApplicationController
 
   def destroy
     cours = Cour.find(params[:id]).destroy
+    inscriptions = Inscription.where(cours_id: params[:id])
+    inscriptions.each do |i|
+      i.destroy
+    end
     redirect_to '/cours/index'
   end
 
@@ -47,6 +52,7 @@ class CoursController < ApplicationController
     cours = Cour.find(params[:id])
     cours.nombre_eleves = cours.nombre_eleves + 1
     cours.save
+    #cours.inscriptions.create eleves_id:current_user.id
     inscription = Inscription.create eleves_id:current_user.id, cours_id:cours.id
     inscription.save
 

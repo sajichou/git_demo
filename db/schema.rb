@@ -10,23 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313083650) do
+ActiveRecord::Schema.define(version: 20180315123920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cours", force: :cascade do |t|
-    t.string "professeur"
     t.string "matiere"
     t.string "jour"
     t.integer "nombre_eleves", default: 0
     t.string "lieu"
     t.float "latitude"
     t.float "longitude"
-    t.integer "user_id"
-    t.integer "el1", default: 0
-    t.integer "el2", default: 0
-    t.integer "el3", default: 0
+    t.integer "teacher_id"
   end
 
   create_table "inscriptions", force: :cascade do |t|

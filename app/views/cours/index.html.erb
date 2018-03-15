@@ -17,7 +17,7 @@
 	</tr>
 	<% @cours.each do |cours| %>
 	<tr>
-		<td><%= cours.professeur%></td>
+		<td><%= Teacher.find(cours.teacher_id).email%></td>
 		<td><%= cours.matiere %></td>
 		<td><%= cours.jour %></td>
 		<td><%= cours.nombre_eleves %></td>
