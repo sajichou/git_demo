@@ -25,3 +25,6 @@ module Projet1
 	}
   end
 end
+
+
+config.serve_static_assets = true
