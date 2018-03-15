@@ -25,5 +25,3 @@ module Projet1
 	}
   end
 end
-
-
