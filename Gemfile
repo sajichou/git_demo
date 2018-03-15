@@ -15,7 +15,9 @@ gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
