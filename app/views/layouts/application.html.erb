@@ -14,9 +14,24 @@
   <body>
 
        <%= render partial:"shared/navbar"%>
+       <% flash.each do |key, value| %>
+       <% if key == "notice"
+          key = "success"
+        elsif key == "alert"
+          key = "warning"
+        end %>
+            
+        <div class="alert alert-<%= key %>">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+          <ul>
+            <li>
+              <%= value %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
 
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+
 
        <% if user_signed_in? %>
          <p>
